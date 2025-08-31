@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=League+Spartan:wght@100..900&display=swap');
 
-:root {
-    --primary-color: #7B3FE4;
-    --primary-bg-color: #F8F6FB;
-    --secondary-bg-color: #FFFFFF;
-    --border-color: #D9CCE8;
-    --title-color: #5B2E91;
-    --text-color: #5B2E91;
-    --link-color: #7B3FE4;
-    --icon-color: #7B3FE4;
-}
-
-[data-theme="dark"] {
+:root,
+:root[data-theme="dark"] {
     --primary-color: #7B3FE4;
     --primary-bg-color: #1E1B26;
     --secondary-bg-color: #2B2537;
@@ -22,6 +12,23 @@
     --icon-color: #CBB3FF;
 }
 
+:root[data-theme="light"] {
+    --primary-color: #7B3FE4;
+    --primary-bg-color: #F8F6FB;
+    --secondary-bg-color: #FFFFFF;
+    --border-color: #D9CCE8;
+    --title-color: #5B2E91;
+    --text-color: #5B2E91;
+    --link-color: #7B3FE4;
+    --icon-color: #7B3FE4;
+}
+
+/* COMO INVERTER CORES
+    html[data-theme="light"] .brand__logo {
+        filter: invert(1);
+    } 
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -31,16 +38,46 @@
 }
 
 body {
-  font-family: "Asap", sans-serif;
-  background-color: var(--primary-bg-color);
+    font-family: "Asap", sans-serif;
+    background-color: var(--primary-bg-color);
 }
 
 a {
     text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
 i {
     color: var(--icon-color);
+}
+
+b {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "League Spartan", sans-serif;
+    text-transform: uppercase;
+    color: var(--title-color);
+    font-weight: 200;
+}
+
+p {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-align: justify;
 }
 
 .header {
@@ -53,13 +90,20 @@ i {
 }
 
 .header__brand .brand__logo {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.header__toggle {
+    display: flex;
+    justify-content: flex-end;
 }
 
 #toggleTheme {
     font-size: 1.25rem;
     color: var(--primary-color);
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
 }
 
 .menu {
@@ -89,7 +133,9 @@ i {
 }
 
 .menu__link.active .menu__icon,
-.menu__link.active .menu__text {
+.menu__link.active .menu__text,
+.menu__link:hover .menu__icon,
+.menu__link:hover .menu__text {
     color: var(--primary-color);
     font-weight: 600;
 }
@@ -108,8 +154,220 @@ i {
     text-transform: uppercase;
 }
 
+.header__nav {
+    display: none;
+}
+
+.menu--principal {
+    gap: 1rem;
+}
+
+.menu--social {
+    gap: 1rem;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 3.125rem;
+    padding: 0.875rem 1.5rem;
+    transition: ease-in-out 3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 3s;
+}
+
+.btn span,
+.btn i {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.btn--primary span {
+    color: var(--primary-color);
+}
+
+.btn--primary {
+    border: 1px solid var(--primary-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem 1rem;
+}
+
+.main__content1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.main__content2 iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.technologies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 6.25rem 0 2rem 0;
+    width: 100vw;
+    background-color: var(--secondary-bg-color);
+    margin-top: -5.5rem;
+}
+
+.technologies h2 {
+    font-size: 2rem;
+    text-transform: none;
+}
+
+.technologies__list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.technologies__item {
+    width: 4.8rem;
+    height: 4.8rem;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--border-color);
+    border-radius: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.technologies__logo {
+    font-size: 2.4rem;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    font-size: 0.875rem;
+    margin-bottom: 5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+footer i {
+    font-size: 32px;
+}
+
 @media (min-width: 768px) {
-    .menu--mobile {
+    .header {
+        position: fixed;
+        padding: 1rem 6rem;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--primary-bg-color);
+    }
+
+    .nav--mobile {
         display: none;
+    }
+
+    .header__nav {
+        display: flex;
+    }
+
+    .header__nav,
+    .header__toggle {
+        min-width: 30%;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    main {
+        padding: 8rem 6rem 4rem 6rem;
+    }
+
+    .main__content1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .technologies {
+        padding: 6.25rem 6rem 2rem 6rem;
+        margin-top: -6rem;
+    }
+
+    footer {
+        flex-direction: row;
+        padding: 40px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main {
+        padding: 12rem 6rem 2rem;
+    }
+
+    .main__content1 .btn {
+        width: auto;
+    }
+
+    .technologies {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10rem 6rem 4rem;
+    }
+
+    .technologies h2 {
+        font-size: 3.5rem;
+        width: 60%;
+    }
+
+    .technologies__item {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .technologies__list {
+        gap: 1rem;
+    }
+
+    .technologies__logo {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    h1 {
+        font-size: 6.25rem;
+    }
+
+    .header {
+        padding: 1rem 15rem;
+    }
+
+    .main {
+        padding: 12rem 15rem 2rem;
+    }
+
+    .technologies {
+        padding: 10rem 15rem 4rem;
     }
 }
